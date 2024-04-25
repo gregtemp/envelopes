@@ -1,3 +1,3 @@
-# Template p5 project
+# Envelopes
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+I wanted to make a website that explains envelopes with some interactive examples with p5js. Starting with the bare bones, might play with the css eventually but tbh it will be a miracle if i even make a little bit of progress on this thing.
