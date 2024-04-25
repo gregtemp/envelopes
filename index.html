@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+
+    <title>Envelopes</title>
+
+    <!-- CSS stylesheet(s) -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <!-- Library script(s) -->
+    <script src="js/libraries/p5.min.js"></script>
+    <!-- <script src="js/libraries/p5.sound.min.js"></script> -->
+
+    <!-- My script(s) -->
+    <!-- <script src="js/script.js"></script> -->
+    <script src="js/sketch_01.js"></script>
+    <script src="js/sketch_02.js"></script>
+    
+  </head>
+  <body>
+    <h1>Let's talk about envelopes.</h1>
+    <p>One helpful way of thinking about envelopes is:<br><center><i>they're just a way of animating something.</i></center></p>   
+    
+    <div id="canvas1-container"></div>
+
+    <p>Envelopes are used all over your DAW for many many things. They're one of the most important core components of pretty much everything you'll be doing with audio. Here we are going to learn all about them, and at the end you'll be able to read them and know what sound to expect.</p>
+    <h3>So in general we can say</h3>
+    <p>An envelope is a graph that shows how the <b>amount</b> of something changes over <b>time</b></p>
+    <p>So lets try to get a more general form, here are some other "sort of" envelopes:</p>
+    <ul>
+      <li>LFO's are basically just looping envelopes. They control some value over time.</li>
+      <li>Automation is basically just really long envelopes (they also control some value over time)</li>
+    </ul>
+    <p>and if we want to go crazy with it:</p>
+    <ul>
+      <li>Oscillator waveforms are just envelopes that loop <b>really</b> fast</li>
+      <li>Waveshaping/Saturation is like an envelope but <i>instead of time</i> we use the <i>incoming sample value</i></li>
+    </ul>
+    <p>I could probably keep going but you get the idea. An envelope is a graph that shows you how one thing relates to another, and by changing the graph we can change the relationship between these two things. If that doesn't make sense yet, don't worry, it will by the end of this.</p>
+    <p>Let's go back to basics and do another example.</p>
+    <div id="canvas2-container"></div>
+    <p>Here we can see the volume of the sine wave is controlled by the envelope. This is what it would look like if we put them one on top of the other. This is actually what's going on with your amp envelope in all the synths, it's just controlling the amplitude of the wave, <i>aka the volume.</i></p>
+    <label for="freqSlider">Frequency:</label>
+    <input type="range" id="freqSlider" min="60" max="300" value="200">
+    <label for="attackSlider">Attack:</label>
+    <input type="range" id="attackSlider" min="1" max="100" value="25">
+    <label for="decaySlider">Decay:</label>
+    <input type="range" id="decaySlider" min="1" max="100" value="75">
+    <p>Note: I just added these 3 parameters here so we can have something to play with, obviously we could have more.</p>
+
+    <br>
+    <br>
+  </body>
+</html>

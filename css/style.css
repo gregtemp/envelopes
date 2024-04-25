@@ -1,0 +1,21 @@
+/*********************************************
+
+Here is a description of any special CSS used.
+In this case it's just padding and margin to 0
+and then centring the canvas (and anything else)
+using the CSS Grid.
+
+Also hides overflow.
+
+**********************************************/
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+    margin-left: 8%;
+    margin-right: 8%;
+    
+}
