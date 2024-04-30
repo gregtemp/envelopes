@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+
+    <title>Envelopes</title>
+
+    <!-- CSS stylesheet(s) -->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+
+    <!-- Library script(s) -->
+    <script src="../../js/libraries/p5.min.js"></script>
+    <!-- <script src="js/libraries/p5.sound.min.js"></script> -->
+
+    <!-- My script(s) -->
+    <!-- <script src="js/script.js"></script> -->
+    <script src="sketch_01.js"></script>
+    <script src="sketch_02.js"></script>
+    
+  </head>
+  <body>
+    <h1>Let's talk about envelopes.</h1>
+    <p>One helpful way of thinking about envelopes is:<br><center><i>they're just a way of animating something.</i></center></p>   
+    
+    <div id="canvas1-container"></div>
+
+    <p>Envelopes are used all over your DAW for many many things. They're one of the most important core components of pretty much everything you'll be doing with audio. Here we are going to learn all about them, and at the end you'll be able to read them and know what sound to expect.</p>
+    <h3>How do they work?</h3>
+    <p>Here's an example of an envelope that controls the volume of a sine wave.</p>
+    <div id="canvas2-container"></div>
+    <p>Here we can see the volume (which is also the height, or in more mathy terms, <i>the amplitude</i>) of the sine wave is controlled by the envelope. This is what it would look like if we put them one on top of the other. This is actually what's going on with your amp envelope in all the synths, it's just controlling the amplitude of the wave, <i>aka the volume.</i></p>
+    <label for="attackSlider">Attack:</label>
+    <input type="range" id="attackSlider" min="1" max="100" value="25">
+    <label for="decaySlider">Decay:</label>
+    <input type="range" id="decaySlider" min="1" max="100" value="75">
+    <label for="sustainSlider">Sustain:</label>
+    <input type="range" id="sustainSlider" min="1" max="100" value="50">
+    <label for="releaseSlider">Release:</label>
+    <input type="range" id="releaseSlider" min="1" max="200" value="120">
+    
+    <p>It's worth playing with this a bit to really get a feel for it. I want to point out a couple things also:</p>
+    <ul>
+      <li><b>Attack Time</b> is the <i>amount of time</i> (usually in milliseconds) from the beginning of the midi note, to the peak. For a volume envelope this peak corresponds to the volume you set your synth to. So if you're synth is at -6db, the peak will be -6db. So the attack time is the amount of time from -inf db to -6db</li>
+      <li><b>Decay Time</b> is the <i>amount of time</i> from the peak until we arrive at the sustain amount.</li>
+      <li><b>Sustain Value</b> is the only one of these controls that isn't an amount of time. It's an amount of the thing you're controlling with the envelope, so for a volume envelope the sustain value is <i>the volume for the sustain portion of the envelope.</i></li>
+      <li>This means that from the moment the midi note starts until the sustain portion starts takes [ attack time + decay time ]</li>
+      <li><b>Release Time</b> is the <i>amount of time</i> from when the midi note ends until the value goes back to 0. So for a volume envelope this would be the amount of time until the synth goes completely quiet after the midi note ends (aka -inf db volume).</li>
+    </ul>
+
+    <p>Don't worry if that seems a bit confusing for now, as we go through and you play with the examples you'll start building your intuition for how they work, and eventually you won't even need to <i>think</i> about it you'll just <i>know it in your bones.</i></p>
+    
+
+    <p>
+      Anyway, let's continue. Onwards!
+      <h3>What if the midi note ends before the attack and/or decay are finished??</h3>
+      Great question, I'm glad you asked. That question is left out of the conversation about envelopes too often, but no longer. Let's play with an example that takes the note length into account.  
+    </p>
+    
+    <br>
+    <br>
+
+  </body>
+</html>
