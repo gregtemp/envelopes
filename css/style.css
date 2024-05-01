@@ -5,7 +5,15 @@ I am shit at css so that's why it looks like this
 (also I figured if I keep it basic it will stop
 me from getting distracted while writing this)
 
+color palette
+#392F5A
+#9DD9D2
+#FFF8F0
+#F4D06F
+#FF8811
+
 **********************************************/
+/* styles.css */
 
 body {
     font-family: Baskerville, "Times New Roman", serif;
@@ -13,8 +21,63 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* height: 100vh; */
     margin-left: 8%;
     margin-right: 8%;
-    
+}
+
+.slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 20px; */
+    height:50px;
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 0px;
+    position: relative;
+    /* top:-5px; */
+}
+
+.slider-range {
+    -webkit-appearance: none;
+    /* transform: rotate(-90deg); */
+    appearance: none;
+    background-color: #9DD9D2; 
+    width: 100px;
+    height: 20px;
+    border-radius: 5px; /* Less rounded border as requested */
+    cursor: pointer;
+    position: relative;
+    outline: none; /* Removes the default focus outline */
+}
+
+.slider-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color:#392F5A; /* White thumb */
+    height: 16px; /* Smaller height for the thumb */
+    width: 4px; /* Full width of the slider */
+    border-radius: 0px; /* Slightly rounded edges for the thumb */
+}
+
+.slider-range::-moz-range-thumb {
+    appearance: none;
+    background-color:#392F5A; /* White thumb */
+    height: 16px; /* Smaller height for the thumb */
+    width: 4px; /* Full width of the slider */
+    border-radius: 0px; /* Slightly rounded edges for the thumb */
+}
+
+label {
+    font-family: Helvetica, sans-serif;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-weight: bold;
+    margin-top: 3px;
+    font-size: 75%;
+    text-transform: uppercase;
+    color: black;
+    text-align: center;
 }

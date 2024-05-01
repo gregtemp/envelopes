@@ -11,13 +11,14 @@
 
     <!-- Library script(s) -->
     <script src="../../js/libraries/p5.min.js"></script>
+    <script src="../../js/sliders.js"></script>
     <!-- <script src="js/libraries/p5.sound.min.js"></script> -->
 
     <!-- My script(s) -->
     <!-- <script src="js/script.js"></script> -->
     <script src="sketch_01.js"></script>
     <script src="sketch_02.js"></script>
-    
+    <script src="envWithMidiNote.js"></script>
   </head>
   <body>
     <h1>Let's talk about envelopes.</h1>
@@ -30,14 +31,25 @@
     <p>Here's an example of an envelope that controls the volume of a sine wave.</p>
     <div id="canvas2-container"></div>
     <p>Here we can see the volume (which is also the height, or in more mathy terms, <i>the amplitude</i>) of the sine wave is controlled by the envelope. This is what it would look like if we put them one on top of the other. This is actually what's going on with your amp envelope in all the synths, it's just controlling the amplitude of the wave, <i>aka the volume.</i></p>
-    <label for="attackSlider">Attack:</label>
-    <input type="range" id="attackSlider" min="1" max="100" value="25">
-    <label for="decaySlider">Decay:</label>
-    <input type="range" id="decaySlider" min="1" max="100" value="75">
-    <label for="sustainSlider">Sustain:</label>
-    <input type="range" id="sustainSlider" min="1" max="100" value="50">
-    <label for="releaseSlider">Release:</label>
-    <input type="range" id="releaseSlider" min="1" max="200" value="120">
+    
+    <div class="slider-container">
+        <div class="slider">
+            <input type="range" id="attackSlider" min="1" max="100" value="25" class="slider-range">
+            <label for="attackSlider">Attack:</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="decaySlider" min="1" max="100" value="75" class="slider-range">
+            <label for="decaySlider">Decay</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="sustainSlider" min="0" max="100" value="50" class="slider-range">
+            <label for="sustainSlider">Sustain</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="releaseSlider" min="1" max="200" value="120" class="slider-range">
+            <label for="releaseSlider">Release</label>
+        </div>
+    </div>
     
     <p>It's worth playing with this a bit to really get a feel for it. I want to point out a couple things also:</p>
     <ul>
@@ -56,6 +68,34 @@
       <h3>What if the midi note ends before the attack and/or decay are finished??</h3>
       Great question, I'm glad you asked. That question is left out of the conversation about envelopes too often, but no longer. Let's play with an example that takes the note length into account.  
     </p>
+    
+    <div id="envwithmidinote-container"></div>
+
+    
+    <div class="slider-container">
+        <div class="slider">
+            <input type="range" id="attack2" min="0" max="100" value="50" class="slider-range">
+            <label for="attack2">Attack</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="decay2" min="0" max="100" class="slider-range">
+            <label for="decay2">Decay</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="sustain2" min="0" max="100" class="slider-range">
+            <label for="sustain2">Sustain</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="release2" min="0" max="200" class="slider-range">
+            <label for="release2">Release</label>
+        </div>
+    </div>
+    <div class="slider-container">
+        <div class="slider">
+            <input type="range" id="noteLength" min="0" max="300" value="300" class="slider-range">
+            <label for="noteLength">Note Length</label>
+        </div>
+    </div>
     
     <br>
     <br>
