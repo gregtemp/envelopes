@@ -39,7 +39,7 @@ let env = [
 p.setup = function() {
     
     p.createCanvas(p.windowWidth, 250);
-    p.textSize(15);
+    p.textSize(13);
     p.textAlign(p.CENTER, p.CENTER);
 };
 
@@ -105,22 +105,22 @@ p.draw = function() {
                 p.fill(0);
                 if (i === 0) {
                     // attack overlay
-                    p.text("attack time:\nthe time from the beginning of the envelope to the peak", p.width/2, p.height-18);
+                    p.text("Attack Time", p.width/2, p.height-10);
                 }
                 else if (i === 1) {
                     // decay overlay
-                    p.text("decay time:\nthe time from the end of the attack phase to the sustain amount", p.width/2, p.height-18);
+                    p.text("Decay Time", p.width/2, p.height-10);
                 }
                 else if (i === 2) {
                     // sustain overlay
                     p.fill(0, 50);
                     p.rect(x1, p.height/2, w1, env[3].y * -100);
                     p.fill(0);
-                    p.text("sustain amount:\nan amount between 0 and the peak that the envelope stays at after\nthe attack and decay phases are over, and until the midi note ends", p.width/2, p.height-28);
+                    p.text("Sustain Amount", p.width/2, p.height-10);
                 }
                 else if (i === 3) {
                     // release overlay
-                    p.text("release time:\nthe time from the end of the midi note until the envelope reaches 0", p.width/2, p.height-18);
+                    p.text("Release Time", p.width/2, p.height-10);
                 }
             }
         }

@@ -35,7 +35,8 @@ let env = [
         y: 0.
     }
 ]
-
+let dotClicked = false;
+let circlePos = p.createVector(0, 0);
 
 
 p.setup = function() {
@@ -57,6 +58,8 @@ p.draw = function() {
     p.noFill();
     p.stroke(c[0]);
     p.translate(p.width/2 - 200, p.height/2 + 15);
+    circlePos.x = p.width/2 -200;
+    circlePos.y = p.height/2 + 15;
     p.beginShape()
     p.vertex(env[0].x, env[0].y);
     let a, ny;
@@ -87,12 +90,26 @@ p.draw = function() {
 
     
     p.rect(0, 30, noteLength, 40);
+
+    circlePos.x += noteLength;
+    circlePos.y += 50;
+    let d = p.dist(p.mouseX, p.mouseY, circlePos.x, circlePos.y);
+    if (d < 10 && dotClicked === false) {
+        p.noFill();
+        p.stroke(c[4]);
+        p.ellipse(noteLength, 50, 20, 20);
+    }
+
     p.noStroke();
     p.fill(c[4]);
     p.ellipse(noteLength, ny*-100, 10, 10);
+    if (dotClicked) {
+        p.fill(255, 0, 0);
+        noteLength = p.constrain(p.mouseX - (p.width/2 - 200), 0, 300);
+        p.select('#noteLength').value(noteLength);
+    }
     p.ellipse(noteLength, 50, 10, 10);
     p.pop();
-
 
 };
 
@@ -103,6 +120,15 @@ p.getSliders = function() {
     env[3].y = p.select('#sustain2').value() / 100.;
     env[3].x = p.select('#noteLength').value();
     env[4].x = p.select('#release2').value() + env[3].x;
+}
+
+p.mousePressed = function() {
+    let d = p.dist(p.mouseX, p.mouseY, circlePos.x, circlePos.y);
+    if (d < 10) dotClicked = true;
+}
+
+p.mouseReleased = function() {
+    dotClicked = false;
 }
 
 };
