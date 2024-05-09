@@ -16,6 +16,7 @@
     <!-- My script(s) -->
     <!-- <script src="js/script.js"></script> -->
     <script src="discontinuity01.js"></script>
+    <script src="env_discont.js"></script>
   </head>
   <body>
     <h1>Unexpected Discontinuities</h1>
@@ -32,7 +33,43 @@
     <h3>What does this have to do with envelopes?</h3>
     <p>Envelopes can create discontinuities in your sound (as you've probably heard before if you've ever tried to use Operator in Ableton to make your sub bass). Sine waves with a sharp amp env are the easiest place to catch this happening, but it is also happening in other wave shapes (but the sound can be masked by the other frequencies that wave is making/contains)</p>
 
-    
+    <div id="env_discont-container"></div>
+    <div class="slider-container">
+        <div class="slider">
+            <input type="range" id="freq" min="4" max="60" value="20" class="slider-range">
+            <label for="freq">Frequency</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="phase" min="0" max="100" value="25" class="slider-range">
+            <label for="phase">Phase</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="envCurve" min="50" max="200" value="100" class="slider-range">
+            <label for="envCurve">EnvCurve</label>
+        </div>    
+    </div>
+    <div class="slider-container">
+        <div class="slider">
+            <input type="range" id="attack" min="0" max="100" value="50" class="slider-range">
+            <label for="attack">Attack</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="decay" min="0" max="100" class="slider-range">
+            <label for="decay">Decay</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="sustain" min="0" max="100" class="slider-range">
+            <label for="sustain">Sustain</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="release" min="1" max="200" class="slider-range">
+            <label for="release">Release</label>
+        </div>
+    </div>
+    <p>Here you can see, depending on how you set the envelope settings, that your envelope can make discontinuities in the wave. Discontinuities are highlighted with the blue arrows, like above.
+    </p>
+    <p>Also please note that the code I wrote for detecting the discontinuities is a bit over sensitive and you aren't likely to hear discontinuities at most places in the envelope other than where the slope of the envelope is straight up and down (usually at the beginning and end), but if you're hearing some unexpected ones you can come back here to remember where they <b>can</b> happen.</p>
+
 
     <br>
     <br>
