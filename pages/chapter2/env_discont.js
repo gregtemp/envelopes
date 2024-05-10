@@ -52,10 +52,13 @@ p.draw = function() {
     env[2].y = p.select('#sustain').value() / 100.;
     env[3].y = p.select('#sustain').value() / 100.;
     env[4].x = p.select('#release').value() + env[3].x;
+    
+    // p.text(env[1].x + "\n" + env[2].x + "\n" + env[3].x + "\n" + env[4].x, 50, 100);
     p.strokeWeight(1.5);
     p.push();
     p.noFill();
     p.stroke(c[0]);
+
     // p.line(0, p.height/2, p.width, p.height/2);
     p.translate(p.width/2 - (env[3].x + 120)/2., p.height/2);
     // p.beginShape()
@@ -71,9 +74,10 @@ p.draw = function() {
     let phase = p.select('#phase').value();
     let prev_y = 0.;
     let prev_delta = 0;
+    let prev_delta2 = 0;
 
     
-    for (let i = 0; i < env[4].x; i ++) {
+    for (let i = 0; i <= env[4].x; i ++) {
         let posx = i;
         let posy;
         if (posx < env[1].x) {
@@ -99,22 +103,35 @@ p.draw = function() {
         p.stroke(c[4]);
         let curve1 = p.sin((posx-1)/(600) * freq + (phase/100 * p.TWO_PI))*p.pow(prev_y, curvePow);
         let curve2 = p.sin(posx/(600) * freq + (phase/100 * p.TWO_PI))*p.pow(posy, curvePow);
-        let delta = curve1 - curve2;
+        let delta = (curve1 - curve2);
+        let delta2 = (delta - prev_delta);
 
         p.line(posx-1, curve1 *-100., posx, curve2 *-100.);
-        // console.log(posx-1, p.sin((posx-1)/(600) * freq)*p.pow(prev_y, curvePow) *-100., posx, p.sin(posx/(600) * freq)*p.pow(posy, curvePow) *-100.);
-        p.stroke(0);
-        p.strokeWeight(2);
-        p.point(posx, p.pow(delta-prev_delta, 2.)*2000.);
-        p.strokeWeight(2);
-        p.stroke(c[4]);
-        // if (i == env[1].x || i == env[2].x || i == env[4].x || i == env[4].x){
-            if (p.pow(delta-prev_delta, 2.)*2000. > 0.3) {
-                p.fill(c[1]);
-                p.noStroke();
-                p.text("▲", posx-1, p.height/2 - 20);
-            }
-        // }
+        
+        // this is nuts, look how nicely the third(? fourth?) derivative captures the discontinuities!
+        // p.stroke(0);
+        // p.strokeWeight(2);
+        // p.point(posx, (delta2 - prev_delta2) * 1000.);
+        // p.strokeWeight(2);
+        // p.stroke(c[4]);
+        let thresh = freq/7;
+        if (i < 5) {
+            thresh = (50-(p.abs(phase) % 50));
+        }
+        else if (i > env[1].x - 5 && i < env[1].x + 5) {
+            //thresh +=  (10 - p.constrain(p.abs(i - env[2].x), 0, 10)) * (4. * freq);
+            thresh = freq/2;
+        }
+        else if (i > env[3].x - 5 && env[3].x + 5) {
+            thresh = freq/2;
+        }
+
+
+        if ((delta2-prev_delta2)*1000. > thresh) {
+            p.fill(c[1]);
+            p.noStroke();
+            p.text("▲", posx-1, p.height/2 - 20);
+        }
         if (i == 0 && p.abs(curve2) > 0.065) {
             p.fill(c[1]);
             p.noStroke();
@@ -123,6 +140,7 @@ p.draw = function() {
         
         prev_y = posy;
         prev_delta = delta;
+        prev_delta2 = delta2;
         
     }
     // p.endShape();
