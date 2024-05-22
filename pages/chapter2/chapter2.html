@@ -66,10 +66,22 @@
             <label for="release">Release</label>
         </div>
     </div>
-    <p>Here you can see, depending on how you set the envelope settings, that your envelope can make discontinuities in the wave. Discontinuities are highlighted with the blue arrows, like above.
+    <p>Here you can see, depending on how you set the envelope settings, that your envelope can make discontinuities in the wave. Discontinuities are highlighted with the blue (teal?) arrows, like above.
     </p>
     <p>Also please note that the code I wrote for detecting the discontinuities is a bit over sensitive and you aren't likely to hear discontinuities at most places in the envelope other than where the slope of the envelope is straight up and down (usually at the beginning and end), but if you're hearing some unexpected ones you can come back here to remember where they <b>can</b> happen.</p>
 
+    <h2>PHEWF</h2>
+    <p>Alright, that's enough of that. Was that too much detail too soon? Maybe, but that's ok, let's keep truckin'. Envelopes can control a lot more than volume, they can control anything! The next chapter will explore some other stuff we can control.</p>
+
+    </br>
+    </br>
+    <details>
+        <summary>Want the gory details of why the algo is so sensitive?</summary>
+        <p>I'm using a threshold on the third derivative to check how abruptly the waveform changes,unfortunately this is sort of an adhoc solution. If you increase the frequency of the wave the regular oscillations will also register as "discontinuities". I tried to scale the threshold with the frequency but it's... well, as you can see I'm not a math wiz so this was a bit above my paygrade. It was a pretty fun exercise for me though so I decided to keep it. I kind of got the feeling that if I kept taking the derivative, eventually I'd get a really nice solution but I got a bit tired of doing it haha. If you've got a better solution please submit a pull request!</p>
+    </details>
+
+    </br> 
+    <h2>Onwards</h2> (this will be a link to the next page eventually)
 
     <br>
     <br>

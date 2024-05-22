@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+
+    <title>Envelopes</title>
+
+    <!-- CSS stylesheet(s) -->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+
+    <!-- Library script(s) -->
+    <script src="../../js/libraries/p5.min.js"></script>
+    <!-- <script src="js/libraries/p5.sound.min.js"></script> -->
+
+    <!-- My script(s) -->
+    <script src="simple_env_pitch.js"></script>
+  </head>
+  <body>
+    <h1>Frequency Control</h1>
+    <h2>Let's see some pitch modulation</h2>
+    <p>Controlling the pitch/frequency of an oscillator with an envelope is a very powerful tool, and while it is often pretty clear what's happening when you just listen to the result, sometimes it gets confusing so it can be helpful to see what's happening as well.</p>
+
+    <p>Here's how a sine wave looks when you just modulate the frequency with an envelope</p>
+    
+    <div id="simple_env_pitch_container"></div>
+
+    <div class="slider-container">
+        <div class="slider">
+            <input type="range" id="attack" min="0" max="100" value="50" class="slider-range">
+            <label for="attack">Attack</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="decay" min="0" max="100" class="slider-range">
+            <label for="decay">Decay</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="sustain" min="0" max="100" class="slider-range">
+            <label for="sustain">Sustain</label>
+        </div>
+        <div class="slider">
+            <input type="range" id="release" min="1" max="200" class="slider-range">
+            <label for="release">Release</label>
+        </div>
+    </div>
+
+    
+    <br>
+    <br>
+  </body>
+</html>
